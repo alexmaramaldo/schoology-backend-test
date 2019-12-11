@@ -26,10 +26,6 @@ _Folder structure_
     ├── vendor          # Generate by composer.json
     ├── Webroot         # Default Web Root from project
 
-# Demo video
-
-[![Demo video](https://img.youtube.com/vi/5qVAZzLM4YE/0.jpg)](https://www.youtube.com/watch?v=5qVAZzLM4YE)
-
 # Description
 
 1. The system was created to search Suggestions. I have a example running here: `http://virtuagym.alexmaramaldo.com/`
