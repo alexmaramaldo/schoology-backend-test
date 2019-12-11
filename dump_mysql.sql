@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.5.5-10.3.10-MariaDB-1:10.3.10+maria~bionic)
+# Host: 127.0.0.1 (MySQL 5.5.5-10.4.8-MariaDB-1:10.4.8+maria~bionic)
 # Database: homestead
-# Generation Time: 2019-05-19 23:16:19 +0000
+# Generation Time: 2019-12-11 21:41:21 +0000
 # ************************************************************
 
 
@@ -20,70 +20,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table plan_day_exercises
+# Dump of table suggestions
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `plan_day_exercises`;
+DROP TABLE IF EXISTS `suggestions`;
 
-CREATE TABLE `plan_day_exercises` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `plan_day_id` int(11) NOT NULL,
-  `name` varchar(150) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_plan_day_exercises_plan_days1_idx` (`plan_day_id`),
-  CONSTRAINT `fk_plan_day_exercises_plan_days1` FOREIGN KEY (`plan_day_id`) REFERENCES `plan_days` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `plan_day_exercises` WRITE;
-/*!40000 ALTER TABLE `plan_day_exercises` DISABLE KEYS */;
-
-INSERT INTO `plan_day_exercises` (`id`, `plan_day_id`, `name`, `created_at`, `updated_at`)
-VALUES
-	(1,1,'Excersice 2','2019-05-19 23:05:59','2019-05-19 23:05:59'),
-	(2,1,'Excersice 1','2019-05-19 23:05:59','2019-05-19 23:05:59'),
-	(3,2,'Excersice 2','2019-05-19 23:06:10','2019-05-19 23:06:10'),
-	(4,2,'Excersice 1','2019-05-19 23:06:10','2019-05-19 23:06:10');
-
-/*!40000 ALTER TABLE `plan_day_exercises` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table plan_days
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `plan_days`;
-
-CREATE TABLE `plan_days` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `plan_id` int(11) NOT NULL,
-  `name` varchar(150) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_plan_days_plans_idx` (`plan_id`),
-  CONSTRAINT `fk_plan_days_plans` FOREIGN KEY (`plan_id`) REFERENCES `plans` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `plan_days` WRITE;
-/*!40000 ALTER TABLE `plan_days` DISABLE KEYS */;
-
-INSERT INTO `plan_days` (`id`, `plan_id`, `name`, `created_at`, `updated_at`)
-VALUES
-	(1,1,'Day 1','2019-05-19 23:05:59','2019-05-19 23:05:59'),
-	(2,1,'Day 2','2019-05-19 23:06:10','2019-05-19 23:06:10');
-
-/*!40000 ALTER TABLE `plan_days` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table plans
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `plans`;
-
-CREATE TABLE `plans` (
+CREATE TABLE `suggestions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(150) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -91,43 +33,18 @@ CREATE TABLE `plans` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `plans` WRITE;
-/*!40000 ALTER TABLE `plans` DISABLE KEYS */;
+LOCK TABLES `suggestions` WRITE;
+/*!40000 ALTER TABLE `suggestions` DISABLE KEYS */;
 
-INSERT INTO `plans` (`id`, `name`, `created_at`, `updated_at`)
+INSERT INTO `suggestions` (`id`, `name`, `created_at`, `updated_at`)
 VALUES
-	(1,'Heavy Plan','2019-05-19 23:06:17','2019-05-19 23:06:17');
+	(1,'Brazil','2019-12-11 20:40:20','2019-05-19 23:05:59'),
+	(2,'United States','2019-12-11 20:40:28','2019-05-19 23:05:59'),
+	(3,'Colombia','2019-12-11 20:40:37','2019-05-19 23:05:59'),
+	(4,'Argentina','2019-12-11 20:40:42','2019-12-11 19:59:34'),
+	(5,'Belgium','2019-12-11 20:41:00','2019-12-11 20:41:00');
 
-/*!40000 ALTER TABLE `plans` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table users
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `users`;
-
-CREATE TABLE `users` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(255) NOT NULL DEFAULT '',
-  `last_name` varchar(255) NOT NULL DEFAULT '',
-  `email` varchar(150) NOT NULL DEFAULT '',
-  `plan_id` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_users_plans1_idx` (`plan_id`),
-  CONSTRAINT `fk_users_plans1` FOREIGN KEY (`plan_id`) REFERENCES `plans` (`id`) ON DELETE SET NULL ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `plan_id`, `created_at`, `updated_at`)
-VALUES
-	(5,'Alex','Maramaldo','alexmaramaldo@gmail.com',1,'2019-05-19 23:15:59','2019-05-19 23:15:59');
-
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+/*!40000 ALTER TABLE `suggestions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
