@@ -28,7 +28,7 @@ _Folder structure_
 
 # Description
 
-1. The system was created to search Suggestions. I have a example running here: `http://virtuagym.alexmaramaldo.com/`
+1. The system was created to search Suggestions.
 2. Created using PHP from scratch, I don't used a PHP Framework, I created literally my owner framework to this Code Challenge, using MVC structure, with Repositories, Router, Dispatchers and others, I hope you like this.
 3. The project has Webroot, this is the ROOT folder, you need to appointment your server to here.
 4. I used the composer to load my classes and phpdotenv to load envvars.
